@@ -1,2 +1,4 @@
-# architecture-future_2_0
-Yandex Practicum course for Software Architecture education
+# Построение архитектуры данных, технологические тренды и миграция в облака
+
+- [Задание 1. Модульная инфраструктура для нескольких сред](/Task1/README.md)
+
