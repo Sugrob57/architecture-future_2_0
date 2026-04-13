@@ -23,7 +23,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./envs/${{ github.event.inputs.environment }}
+        working-directory: ./Task2/envs/${{ github.event.inputs.environment }}
 
     steps:
       - name: Checkout
