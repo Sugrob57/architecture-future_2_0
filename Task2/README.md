@@ -18,7 +18,8 @@ YC_SERVICE_ACCOUNT_KEY (содержимое authorized_key.json)
 
 ### Реализация 
 
-Github Actions pipeline описан в файле [terraform.yml](/.github/workflows/terraform.yml)
+Github Actions pipeline описан в файле [terraform.yml](/Task2/.github/workflows/terraform.yml)
 
 ### Пример запуска
 
+![start](/Task2/ga1.png)
