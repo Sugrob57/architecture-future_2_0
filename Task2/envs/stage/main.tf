@@ -5,9 +5,9 @@ terraform {
       version = "0.197.0"
     }
   }
-}
 
-backend "s3" {}
+  backend "s3" {}
+}
 
 provider "yandex" {
   service_account_key_file = "key.json"
