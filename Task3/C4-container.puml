@@ -1,0 +1,55 @@
+@startuml Future2_Container
+!include C4_Container.puml
+
+Person(user, "User / Operator")
+System_Ext(ext, "External Systems")
+
+System_Boundary(system, "Future 2.0 Platform") {
+
+    Container(api, "API Gateway / BFF", "Kong / BFF", "Api для клиентов")
+
+    Container(medical, "Medical Services", "Microservices", "Пациенты, анализы, лечение")
+    Container(fintech, "Fintech Services", "Microservices", "Счета, платежи, бухгалтерия")
+    Container(ai, "AI", "Python", "ML-модели, AI-решения")
+    Container(inventory, "Inventory Services", "Microservices", "Оборудование и провайдеры")
+    Container(hr, "HR Services", "Microservices", "Данные о сотрудниках и найме")
+
+    Container(kafka, "Events Platform", "Kafka", "Маршрутизация событий")
+
+    Container(data_platform, "Data Platform (Data Mesh)", "Flink / Spark / Lake", "Хранение и обработка данных")
+    Container(bi, "BI", "Power BI / Portal", "Аналитика и отчетность")
+
+    Container(schema, "Schema Registry", "Confluent Schema Registry", "Event schemas")
+    Container(catalog, "Data Catalog", "DataHub", "Метаданные и управление")
+
+    Container(security, "IAM / Security", "OAuth2 / Keycloak", "Access control")
+    Container(obs, "Observability", "Prometheus / Grafana / ELK", "Мониторинг")
+
+    Container(camel, "Legacy ESB", "Apache Camel", "Legacy-интеграции")
+    Container(dwh, "Legacy DWH", "SQL Server 2008", "Старое DWH-решение")
+}
+
+Rel(user, api, "Использует")
+Rel(api, medical, "Управляет")
+Rel(api, fintech, "Управляет")
+Rel(api, ai, "Управляет")
+
+Rel(medical, kafka, "Events")
+Rel(fintech, kafka, "Events")
+Rel(ai, kafka, "Events")
+
+Rel(kafka, data_platform, "стримы событий")
+Rel(data_platform, bi, "предоставляет данные")
+
+Rel(kafka, schema, "Использует схемы")
+Rel(data_platform, catalog, "публикует метаданные")
+
+Rel(api, security, "Авторизует")
+Rel(medical, obs, "Метрики, логи, трейсинг")
+
+Rel(camel, dwh, "Чтение/запись")
+Rel(kafka, camel, "Events")
+
+Rel(ext, api, "API access")
+
+@enduml
