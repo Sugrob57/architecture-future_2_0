@@ -2,33 +2,47 @@
 
 # Решение
 
-
-# Terraform VM Module для разных окружений
-
 ## Предварительные требования
-- Установленный Terraform (>= 1.0)
-- Доступ к OpenStack облаку (или другому провайдеру)
-- Настроенные переменные окружения для провайдера:
+- Установить Terraform (>= 1.0)
+- Доступ к Yandex Cloud
+- Скачать модуль yandex-cloud (Если нет доступа, то можно так: [Как перенести модули с другого хоста](/Task1/README2.md))
+- Настроить переменные окружения для провайдера:
+  [Начало работы с Terrafom](https://yandex.cloud/ru/docs/tutorials/infrastructure-management/terraform-quickstart?utm_referrer=https%3A%2F%2Fyandex.ru%2Fsearch%3Fclid%3D1906725%26text%3Dterraform%2Byandex%2Bcloud%26lr%3D21621)
 
 ```bash
-  export OS_AUTH_URL=https://cloud.example.com:5000/v3
-  export OS_USERNAME=your-username
-  export OS_PASSWORD=your-password
-  export OS_PROJECT_NAME=your-project
-  export OS_REGION_NAME=RegionOne
+export YC_CLOUD_ID=<cloudId>
+export YC_FOLDER_ID=<folderId>
+export YC_SERVICE_ACCOUNT_KEY_FILE=~/Task1/authorized_key.json
 ```
 
-## Запуск окружений
+## Описание
+Модуль создаёт виртуальную машину в Yandex Cloud с:
+- boot-диском
+- дополнительным диском
+- сетевым интерфейсом
+- SSH доступом
 
-### DEV окружение
+## Параметры
+
+| Параметр | Описание |
+|----------|----------|
+| vm_name | имя ВМ |
+| cores | CPU |
+| memory | RAM |
+| disk_size | размер диска |
+| subnet_id | ID подсети |
+| ssh_key | публичный SSH ключ |
+| zone | зона |
+| image_id | образ |
+
+## Запуск
 
 ```bash
-  cd envs/dev
+cd envs/<environment>
 terraform init
 terraform plan
 terraform apply -auto-approve
 ```
-
 
 ### Удаление ресурсов
 
@@ -36,6 +50,13 @@ terraform apply -auto-approve
 cd envs/<environment>
 terraform destroy
 ```
+
+## Outputs
+
+- vm_id
+- external_ip
+- vm_name
+- disk_id
 
 ### Проверка outputs
 

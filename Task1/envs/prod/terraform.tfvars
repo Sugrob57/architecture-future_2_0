@@ -1,17 +1,13 @@
-# PROD окружение - максимальные ресурсы, отказоустойчивость
-vm_name         = "prod-vm-01"
-vcpus           = 8
-ram_mb          = 16384
-disk_size_gb    = 200
-subnet_id       = "subnet-prod-11223"
-ssh_public_key  = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC... user@prod"
-image_id        = "ubuntu-22.04-lts"
-availability_zone = "ru-msk-3"
+vm_name   = "prod-vm"
+cores     = 8
+memory    = 8
+disk_size = 10
 
-# Максимальный набор дисков для production
-additional_disks = {
-  "data"     = 200
-  "logs"     = 100
-  "backup"   = 500
-  "archive"  = 1000
-}
+zone      = "ru-central1-a"
+subnet_id = "your-subnet-id"
+image_id  = "your-image-id"
+yc_token  = "" 
+cloud_id  = ""
+folder_id = ""
+
+ssh_key = "${file("~/.ssh/id_rsa.pub")}"
