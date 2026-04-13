@@ -1,0 +1,13 @@
+vm_name   = "prod-vm"
+cores     = 8
+memory    = 8
+disk_size = 10
+
+zone      = "ru-central1-a"
+subnet_id = "your-subnet-id"
+image_id  = "your-image-id"
+yc_token  = "" 
+cloud_id  = ""
+folder_id = ""
+
+ssh_key = "${file("~/.ssh/id_rsa.pub")}"
