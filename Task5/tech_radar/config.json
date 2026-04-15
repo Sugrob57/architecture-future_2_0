@@ -1,44 +1,105 @@
 {
+  "basePath": "/",
+  "baseUrl": "",
+  "editUrl": "",
+  "logoFile": "logo.svg",
+  "dataUrl": "config.json",
+  "toggles": {
+      "showChart": true,
+      "showTagFilter": true,
+      "showQuadrantList": true,
+      "showEmptyRings": false
+    },
+  "sections": ["radar", "tags", "list"],
+  "colors": {
+      "foreground": "#fcf2e6",
+      "background": "#113521",
+      "highlight": "#d4a373",
+      "content": "#fff",
+      "text": "#575757",
+      "link": "#bc6c25",
+      "border": "rgba(255, 255, 255, 0.1)",
+      "tag": "rgba(255, 255, 255, 0.1)"
+    },
   "rings": [
-    { "id": "adopt", "name": "Adopt" },
-    { "id": "trial", "name": "Trial" },
-    { "id": "assess", "name": "Assess" },
-    { "id": "hold", "name": "Hold" }
-  ],
+      {
+        "id": "adopt",
+        "title": "Активно используем",
+        "description": "",
+        "color": "#588157",
+        "radius": 0.5,
+        "strokeWidth": 5
+      },
+      {
+        "id": "trial",
+        "title": "Пробуем",
+        "description": "",
+        "color": "#457b9d",
+        "radius": 0.69,
+        "strokeWidth": 3
+      },
+      {
+        "id": "assess",
+        "title": "Изучаем",
+        "description": "",
+        "color": "#bc6c25",
+        "radius": 0.85,
+        "strokeWidth": 2
+      },
+      {
+        "id": "hold",
+        "title": "Выкидываем",
+        "description": "",
+        "color": "#d62828",
+        "radius": 1,
+        "strokeWidth": 0.75
+      }
+    ],
   "quadrants": [
-    { "id": "architecture", "name": "Architecture" },
-    { "id": "data", "name": "Data Platform" },
-    { "id": "platform", "name": "Platform & Infra" },
-    { "id": "tools", "name": "Tools & BI" }
-  ],
-  "entries": [
-
-    { "label": "Event-Driven Architecture", "quadrant": "architecture", "ring": "adopt" },
-    { "label": "Data Mesh", "quadrant": "architecture", "ring": "trial" },
-    { "label": "Microservices", "quadrant": "architecture", "ring": "adopt" },
-    { "label": "Saga Pattern", "quadrant": "architecture", "ring": "trial" },
-    { "label": "Strangler Pattern", "quadrant": "architecture", "ring": "adopt" },
-    { "label": "API Gateway", "quadrant": "architecture", "ring": "adopt" },
-
-    { "label": "Kafka / Pulsar", "quadrant": "data", "ring": "adopt" },
-    { "label": "Stream Processing (Flink)", "quadrant": "data", "ring": "trial" },
-    { "label": "Data Lake (S3 / ADLS)", "quadrant": "data", "ring": "adopt" },
-    { "label": "ClickHouse / OLAP", "quadrant": "data", "ring": "trial" },
-    { "label": "Schema Registry", "quadrant": "data", "ring": "adopt" },
-    { "label": "Data Catalog", "quadrant": "data", "ring": "trial" },
-    { "label": "Batch ETL", "quadrant": "data", "ring": "hold" },
-
-    { "label": "Kubernetes", "quadrant": "platform", "ring": "adopt" },
-    { "label": "Cloud (AWS/Azure/GCP)", "quadrant": "platform", "ring": "adopt" },
-    { "label": "Terraform / IaC", "quadrant": "platform", "ring": "adopt" },
-    { "label": "Observability (Prometheus/Grafana)", "quadrant": "platform", "ring": "adopt" },
-    { "label": "Service Mesh", "quadrant": "platform", "ring": "assess" },
-
-    { "label": "Power BI", "quadrant": "tools", "ring": "adopt" },
-    { "label": "Self-Service BI", "quadrant": "tools", "ring": "trial" },
-    { "label": "Feature Store", "quadrant": "tools", "ring": "assess" },
-    { "label": "ML Ops Platform", "quadrant": "tools", "ring": "trial" },
-    { "label": "PowerBuilder", "quadrant": "tools", "ring": "hold" }
-
-  ]
+      {
+        "id": "architecture",
+        "title": "Architecture",
+        "description": "",
+        "color": "#a3b18a"
+      },
+      {
+        "id": "data",
+        "title": "Data Platform",
+        "description": "",
+        "color": "#588157"
+      },
+      {
+        "id": "platform",
+        "title": "Platform & Infra",
+        "description": "",
+        "color": "#3f633e"
+      },
+      {
+        "id": "tools",
+        "title": "Tools & BI",
+        "description": "",
+        "color": "#40713f"
+      }
+    ],
+  "chart": {
+      "size": 800,
+      "blipSize": 12
+    },
+  "flags": {
+      "new": {
+        "color": "#f1235a",
+        "title": "Новое",
+        "titleShort": "N",
+        "description": "Новое в этой версии"
+      },
+      "changed": {
+        "color": "#40a7d1",
+        "title": "Изменено",
+        "titleShort": "C",
+        "description": "Недавно менялось"
+      },
+      "default": {
+        "description": "Нет изменений"
+      }
+    }
 }

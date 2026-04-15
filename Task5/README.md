@@ -10,6 +10,11 @@
 
 ## 1. Технический радар
 
+SPA-сайт настроен и лежит в директории [/Task5/tech_radar/about.md](/Task5/tech_radar/about.md)
+
+![radar2](/Task5/radar2.png)
+
+![radar1](/Task5/radar1.png)
 
 ## 2. TCO-анализ
 
