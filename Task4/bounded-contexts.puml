@@ -1,0 +1,37 @@
+@startuml BoundedContexts
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+Person(user, "User")
+
+System_Boundary(system, "Future 2.0 Domains") {
+
+    System(patient, "Patient Management", "Карточки пациентов")
+    System(clinical, "Clinical Care", "Лечение и медицинские записи")
+    System(ai, "AI Diagnostics", "ML диагностика")
+
+    System(accounts, "Accounts & Payments", "Банковые операции, платежи")
+    System(lending, "Lending", "Займы и кредитование")
+
+    System(billing, "Billing", "Счета, счет-фактуры")
+
+    System(identity, "Identity & Access", "Авторизация и пользователи")
+
+    System(analytics, "Analytics / Data Platform", "Data products")
+}
+
+Rel(user, patient, "Использует")
+Rel(patient, clinical, "Данные пациентов")
+Rel(clinical, ai, "Использует AI")
+
+Rel(clinical, billing, "Формирует счета")
+Rel(billing, accounts, "Запросы на оплату")
+
+Rel(accounts, lending, "Кредитные проверки, оценка рисков")
+
+Rel(patient, identity, "Авторизует")
+
+Rel_R(patient, analytics, "Публикация событий")
+Rel_R(clinical, analytics, "Публикация событий")
+Rel_R(accounts, analytics, "Публикация событий")
+
+@enduml

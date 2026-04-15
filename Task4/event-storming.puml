@@ -1,0 +1,62 @@
+@startuml EventStorming
+
+left to right direction
+skinparam rectangle {
+  BackgroundColor #FFF2CC
+  BorderColor black
+}
+
+' === DOMAINS ===
+
+rectangle "Patient Management" {
+  rectangle "PatientRegistered"
+  rectangle "PatientUpdated"
+}
+
+rectangle "Clinical Care" {
+  rectangle "AppointmentScheduled"
+  rectangle "DiagnosisCreated"
+  rectangle "TreatmentStarted"
+}
+
+rectangle "AI Diagnostics" {
+  rectangle "AIDiagnosisRequested"
+  rectangle "AIDiagnosisCompleted"
+}
+
+rectangle "Billing" {
+  rectangle "InvoiceCreated"
+  rectangle "InvoicePaid"
+}
+
+rectangle "Accounts & Payments" {
+  rectangle "PaymentInitiated"
+  rectangle "PaymentCompleted"
+}
+
+rectangle "Lending" {
+  rectangle "LoanApplicationSubmitted"
+  rectangle "LoanApproved"
+  rectangle "LoanRejected"
+}
+
+' === FLOW ===
+
+"PatientRegistered" --> "AppointmentScheduled"
+"AppointmentScheduled" --> "DiagnosisCreated"
+
+"DiagnosisCreated" --> "AIDiagnosisRequested"
+"AIDiagnosisRequested" --> "AIDiagnosisCompleted"
+
+"AIDiagnosisCompleted" --> "TreatmentStarted"
+
+"TreatmentStarted" --> "InvoiceCreated"
+"InvoiceCreated" --> "PaymentInitiated"
+
+"PaymentInitiated" --> "PaymentCompleted"
+"PaymentCompleted" --> "InvoicePaid"
+
+"PaymentCompleted" --> "LoanApplicationSubmitted"
+"LoanApplicationSubmitted" --> "LoanApproved"
+
+@enduml
