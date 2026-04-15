@@ -1,0 +1,23 @@
+@startuml Roadmap
+
+|Phase 1: Pilot|
+start
+:Select domains;
+:Deploy Kafka;
+:Create first data product;
+:Implement DLQ;
+
+|Phase 2: Scale|
+:Connect domains;
+:Introduce Data Catalog;
+:Streaming pipelines;
+:Legacy integration layer;
+
+|Phase 3: Data Mesh|
+:Domain ownership;
+:Self-service BI;
+:Decommission DWH;
+:Event-driven everywhere;
+
+stop
+@enduml

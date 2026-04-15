@@ -1,0 +1,44 @@
+{
+  "rings": [
+    { "id": "adopt", "name": "Adopt" },
+    { "id": "trial", "name": "Trial" },
+    { "id": "assess", "name": "Assess" },
+    { "id": "hold", "name": "Hold" }
+  ],
+  "quadrants": [
+    { "id": "architecture", "name": "Architecture" },
+    { "id": "data", "name": "Data Platform" },
+    { "id": "platform", "name": "Platform & Infra" },
+    { "id": "tools", "name": "Tools & BI" }
+  ],
+  "entries": [
+
+    { "label": "Event-Driven Architecture", "quadrant": "architecture", "ring": "adopt" },
+    { "label": "Data Mesh", "quadrant": "architecture", "ring": "trial" },
+    { "label": "Microservices", "quadrant": "architecture", "ring": "adopt" },
+    { "label": "Saga Pattern", "quadrant": "architecture", "ring": "trial" },
+    { "label": "Strangler Pattern", "quadrant": "architecture", "ring": "adopt" },
+    { "label": "API Gateway", "quadrant": "architecture", "ring": "adopt" },
+
+    { "label": "Kafka / Pulsar", "quadrant": "data", "ring": "adopt" },
+    { "label": "Stream Processing (Flink)", "quadrant": "data", "ring": "trial" },
+    { "label": "Data Lake (S3 / ADLS)", "quadrant": "data", "ring": "adopt" },
+    { "label": "ClickHouse / OLAP", "quadrant": "data", "ring": "trial" },
+    { "label": "Schema Registry", "quadrant": "data", "ring": "adopt" },
+    { "label": "Data Catalog", "quadrant": "data", "ring": "trial" },
+    { "label": "Batch ETL", "quadrant": "data", "ring": "hold" },
+
+    { "label": "Kubernetes", "quadrant": "platform", "ring": "adopt" },
+    { "label": "Cloud (AWS/Azure/GCP)", "quadrant": "platform", "ring": "adopt" },
+    { "label": "Terraform / IaC", "quadrant": "platform", "ring": "adopt" },
+    { "label": "Observability (Prometheus/Grafana)", "quadrant": "platform", "ring": "adopt" },
+    { "label": "Service Mesh", "quadrant": "platform", "ring": "assess" },
+
+    { "label": "Power BI", "quadrant": "tools", "ring": "adopt" },
+    { "label": "Self-Service BI", "quadrant": "tools", "ring": "trial" },
+    { "label": "Feature Store", "quadrant": "tools", "ring": "assess" },
+    { "label": "ML Ops Platform", "quadrant": "tools", "ring": "trial" },
+    { "label": "PowerBuilder", "quadrant": "tools", "ring": "hold" }
+
+  ]
+}
