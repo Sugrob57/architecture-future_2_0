@@ -1,0 +1,95 @@
+@startuml EventStormingFull
+
+'left to right direction
+
+' === Стили ===
+skinparam rectangle {
+  BorderColor black
+}
+
+skinparam rectangle<<actor>> {
+  BackgroundColor #E1D5E7
+}
+
+skinparam rectangle<<command>> {
+  BackgroundColor #DAE8FC
+}
+
+skinparam rectangle<<aggregate>> {
+  BackgroundColor #FFF2CC
+}
+
+skinparam rectangle<<event>> {
+  BackgroundColor #F8CECC
+}
+
+skinparam rectangle<<read>> {
+  BackgroundColor #D5E8D4
+}
+
+' === ACTORS ===
+rectangle "Doctor" <<actor>>
+rectangle "Client" <<actor>>
+
+' === COMMANDS ===
+rectangle "Register Patient" <<command>>
+rectangle "Create Diagnosis" <<command>>
+rectangle "Run AI Diagnosis" <<command>>
+rectangle "Start Treatment" <<command>>
+rectangle "Create Invoice" <<command>>
+rectangle "Process Payment" <<command>>
+
+' === AGGREGATES ===
+rectangle "Patient" <<aggregate>>
+rectangle "Medical Case" <<aggregate>>
+rectangle "AI Request" <<aggregate>>
+rectangle "Invoice" <<aggregate>>
+rectangle "Payment" <<aggregate>>
+
+' === EVENTS ===
+rectangle "PatientRegistered" <<event>>
+rectangle "DiagnosisCreated" <<event>>
+rectangle "AIDiagnosisCompleted" <<event>>
+rectangle "TreatmentStarted" <<event>>
+rectangle "InvoiceCreated" <<event>>
+rectangle "PaymentCompleted" <<event>>
+
+' === READ MODELS ===
+rectangle "Patient View" <<read>>
+rectangle "Diagnosis View" <<read>>
+rectangle "Billing View" <<read>>
+rectangle "Payments Dashboard" <<read>>
+
+' === FLOW ===
+
+Client --> "Register Patient"
+Doctor --> "Register Patient"
+
+"Register Patient" --> Patient
+Patient --> "PatientRegistered"
+"PatientRegistered" --> "Patient View"
+
+Doctor --> "Create Diagnosis"
+"Create Diagnosis" --> "Medical Case"
+"Medical Case" --> "DiagnosisCreated"
+"DiagnosisCreated" --> "Diagnosis View"
+
+"DiagnosisCreated" --> "Run AI Diagnosis"
+"Run AI Diagnosis" --> "AI Request"
+"AI Request" --> "AIDiagnosisCompleted"
+
+"AIDiagnosisCompleted" --> "Start Treatment"
+"Start Treatment" --> "Medical Case"
+"Medical Case" --> "TreatmentStarted"
+
+"TreatmentStarted" --> "Create Invoice"
+"Create Invoice" --> "Invoice"
+"Invoice" --> "InvoiceCreated"
+"InvoiceCreated" --> "Billing View"
+
+"InvoiceCreated" --> "Process Payment"
+"Process Payment" --> "Payment"
+"Payment" --> "PaymentCompleted"
+"PaymentCompleted" --> "Payments Dashboard"
+
+@enduml

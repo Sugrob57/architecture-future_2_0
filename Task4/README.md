@@ -12,41 +12,51 @@
 
 ## Event Storming (событийная модель)
 
+### Events
+
+События, которые обрабатывают системы
+
 ![EventStorming](/Task4/EventStorming.png)
+
+### Actor => Command => Aggregate => Event => Read Model
+
+Описание жиненного цикла событий (на примере Medical Case (Clinical))
+
+![EventStorming](/Task4/EventStormingFull.png)
 
 ## Aggregates (ключевые)
 
 1. Patient Aggregate
-    Граница: пациент
-    Ключ: patientId
-    Инварианты:
+    - Граница: пациент
+    - Ключ: patientId
+    - Инварианты:
         - пациент должен быть уникален
         - нельзя удалить при наличии лечения
 2. Medical Case (Clinical)
     Ключ: caseId
     Инварианты:
         - кейс привязан к пациенту
-        - статус: created → diagnosed → treated
+        - статус: created => diagnosed => treated
 3. Invoice Aggregate
     Ключ: invoiceId
     Инварианты:
         - сумма фиксирована после создания
         - нельзя оплатить дважды
 4. Payment Aggregate
-    Ключ: paymentId
-    Инварианты:
+    - Ключ: paymentId
+    - Инварианты:
         - сумма = invoice
         - идемпотентность
 5. Loan Aggregate
-    Ключ: loanId
-    Инварианты:
+    - Ключ: loanId
+    - Инварианты:
         - либо approved, либо rejected
         - кредитный лимит
 6. AI Request Aggregate
-    Ключ: requestId
-    Инварианты:
+    - Ключ: requestId
+    - Инварианты:
         - один результат на запрос
-        - статус: pending → completed
+        - статус: pending => completed
 
 ## Каталог событий
 
