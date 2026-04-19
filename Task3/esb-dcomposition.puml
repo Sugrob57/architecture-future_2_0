@@ -1,0 +1,21 @@
+@startuml ESB_Decomposition
+
+rectangle "Legacy ESB (Camel)" as ESB
+
+rectangle "API Gateway" as API
+rectangle "Kafka" as Kafka
+rectangle "Schema Registry" as Schema
+rectangle "Airflow / ETL" as ETL
+rectangle "Stream Processing (Flink)" as Stream
+rectangle "Domain Services" as Domain
+rectangle "Anti-Corruption Layer" as ACL
+
+ESB --> API : Sync APIs
+ESB --> Kafka : Async routing
+ESB --> Schema : Validation
+ESB --> ETL : Batch transforms
+ESB --> Stream : Streaming transforms
+ESB --> Domain : Business logic
+ESB --> ACL : Legacy integration
+
+@enduml
